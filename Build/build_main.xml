@@ -2,9 +2,9 @@
   <description>IIB Continuous Integration Demo (main script)</description>
 
 	
-  <import file="Build/build_common.xml" as="commonbuild"/>
+  <import file="Build/build_common.xml"/>
 
-  <target name="init" depends="commonbuild.bootstrap">
+  <target name="init" depends="bootstrap">
     <tstamp />
     <property environment="env" />
     <property name="path.build" value="Build" />
