@@ -2,7 +2,7 @@
   <description>IIB Continuous Integration Demo (main script)</description>
 
 	
-  <import file="Build/build_common.xml"/>
+  <import file="build_common.xml"/>
 
   <target name="init" depends="bootstrap">
     <tstamp />
