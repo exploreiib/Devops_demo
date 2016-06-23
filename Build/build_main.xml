@@ -2,7 +2,7 @@
   <description>IIB Continuous Integration Demo (main script)</description>
 
 	
-  <include file="build_common.xml" as="commonbuild"/>
+  <include file="Build/build_common.xml" as="commonbuild"/>
 
   <target name="init" depends="commonbuild.bootstrap">
     <tstamp />
