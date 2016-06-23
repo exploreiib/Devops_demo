@@ -1,0 +1,41 @@
+<project name="IIB-CI-MAIN" default="deploySource" basedir="..">
+  <description>IIB Continuous Integration Demo (main script)</description>
+
+  <target name="init">
+    <tstamp />
+    <property environment="env" />
+    <property name="path.build" value="Build" />
+    <property file="${path.build}/build.properties" />
+  </target>
+
+  <target name="deploySource" depends="init">
+ 
+    <exec executable="id" />
+    <exec executable="mqsiservice">
+      <arg value="-v" />
+    </exec>
+    <exec executable="mqsilist" />
+    <exec executable="mqsilist">
+      <arg value="${iib.node}" />
+    </exec>
+
+    <exec executable="mqsideploy">
+      <arg value="${iib.node}" />
+      <arg value="-e" />
+      <arg value="${iib.svr}" />
+      <arg value="-a" />
+      <arg value="${iib.bar}" />
+      <arg value="-m" />
+    </exec>
+
+    <exec executable="mqsireportproperties">
+      <arg value="${iib.node}" />
+      <arg value="-e" />
+      <arg value="${iib.svr}" />
+      <arg value="-o" />
+      <arg value="HTTPConnector" />
+      <arg value="-r" />
+    </exec>
+
+  </target>
+</project>
