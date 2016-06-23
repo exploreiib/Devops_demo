@@ -1,0 +1,94 @@
+<project name="IIB-CI-MAIN" default="compileSource" basedir="..">
+  <description>IIB Continuous Integration Demo (main script)</description>
+
+	
+  <include file="build_common.xml" as="commonbuild"/>
+
+  <target name="init" depends="commonbuild.bootstrap">
+    <tstamp />
+    <property environment="env" />
+    <property name="path.build" value="Build" />
+    <property file="${path.build}/build.properties" />
+  </target>
+
+  <target name="compileSource" depends="init">
+    <!-- clean workspace -->
+    <delete failonerror="false" verbose="true">
+      <fileset dir="." includes="**/*.bar" />
+    </delete>
+
+    <exec executable="id" />
+    <exec executable="mqsiservice">
+      <arg value="-v" />
+    </exec>
+    <exec executable="mqsilist" />
+    <exec executable="mqsilist">
+      <arg value="${iib.node}" />
+    </exec>
+
+    <!-- build workspace and create BAR file -->
+    <exec executable="mqsicreatebar">
+      <arg value="-data" />
+      <arg value="${basedir}" />
+      <arg value="-b" />
+      <arg value="${iib.bar}" />
+      <arg value="-a" />
+      <arg value="DevOps_Demo_App" />
+      <arg value="-deployAsSource" />       <!-- we cannot inline artifacts in a shared library -->
+    </exec>
+
+    
+   <!--<exec executable="mqsiapplybaroverride">
+      <arg value="-b" />
+      <arg value="${iib.bar}" />
+      <arg value="-m" />
+      <arg value="main#HTTP Input.URLSpecifier=/${http.esql.echo.url}" />
+      <arg value="-k" />
+      <arg value="HTTPESQLEchoApp" />
+    </exec>
+
+    <exec executable="mqsiapplybaroverride">
+      <arg value="-b" />
+      <arg value="${iib.bar}" />
+      <arg value="-m" />
+      <arg value="main#HTTP Input.URLSpecifier=/${http.java.echo.url}" />
+      <arg value="-k" />
+      <arg value="HTTPJavaEchoApp" />
+    </exec>-->
+
+  	  </target>
+
+<target name="deploySource" depends="init">
+	    
+
+	    <exec executable="id" />
+	    <exec executable="mqsiservice">
+	      <arg value="-v" />
+	    </exec>
+	    <exec executable="mqsilist" />
+	    <exec executable="mqsilist">
+	      <arg value="${iib.node}" />
+	    </exec>
+
+	    <exec executable="mqsideploy">
+	      <arg value="${iib.node}" />
+	      <arg value="-e" />
+	      <arg value="${iib.svr}" />
+	      <arg value="-a" />
+	      <arg value="${iib.bar}" />
+	      <arg value="-m" />
+	    </exec>
+
+	    <exec executable="mqsireportproperties">
+	      <arg value="${iib.node}" />
+	      <arg value="-e" />
+	      <arg value="${iib.svr}" />
+	      <arg value="-o" />
+	      <arg value="HTTPConnector" />
+	      <arg value="-r" />
+	    </exec>
+
+	   
+	  </target>
+
+</project>

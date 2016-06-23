@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.examples.com/wsdl/HelloService.wsdl" xmlns:tns="http://www.examples.com/wsdl/HelloService.wsdl">
+  <xsd:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd"/>
+
+<!-- BEGIN Global group petaining to all wsdl:message definitions -->
+    <xsd:group name="SayHelloRequestGroup">
+    <xsd:sequence>
+      <xsd:element name="firstName" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:group>
+    <xsd:group name="SayHelloResponseGroup">
+    <xsd:sequence>
+      <xsd:element name="greeting" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:group>
+<!-- END Global group -->
+
+
+<!-- BEGIN Message Definitions for the wsdl:operations  -->
+<!-- END Message Definitions -->
+
+
+</xsd:schema>

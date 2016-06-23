@@ -1,0 +1,28 @@
+
+
+Importing file: C:\AICIT\AFPI\ACIT Assets\3093 - DevOps for IIB using OpenSource\SayHello1.wsdl
+
+
+The following is a list of WS-I warning messages found when importing:
+WS-I BP 1.1: (BP2406) The soap:body must specify a "use" attribute with the value "literal"., Line: 29, Column: 13
+WS-I BP 1.1: (BP2406) The soap:body must specify a "use" attribute with the value "literal"., Line: 36, Column: 13
+
+
+The WSDL import will proceed with bindings Hello_Binding.
+Creating wsdl schema document for file:///C:/AICIT/AFPI/ACIT Assets/3093 - DevOps for IIB using OpenSource/SayHello1.wsdl.
+Parsing wsdl binding {http://www.examples.com/wsdl/HelloService.wsdl}Hello_Binding.
+Parsing wsdl binding input sayHello.
+Parsing wsdl binding output sayHello.
+Processing rpc style for operation sayHello.
+Populating WSDL schema SayHello1.xsd.
+Creating file SayHello1.xsd in the workspace.
+Creating file SayHello11.xsd in the workspace.
+Copying source WSDL SayHello1.wsdl to SayHello1.wsdl.
+
+Elapsed time processing this message definition file: 0.984 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

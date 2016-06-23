@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:examples:helloservice" xmlns:Q1="http://www.examples.com/wsdl/HelloService.wsdl" xmlns:Q2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:Q3="urn:examples:helloservice" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+  <xsd:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd"/>
+  <xsd:import namespace="http://www.examples.com/wsdl/HelloService.wsdl" schemaLocation="SayHello1.xsd"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="sayHello" type="Q3:sayHello_OperType"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="sayHelloResponse" type="Q3:sayHelloResponse_OperType"/>
+  <xsd:complexType name="sayHello_OperType">
+    <xsd:choice maxOccurs="1" minOccurs="1">
+      <xsd:group ref="Q1:SayHelloRequestGroup"/>
+    </xsd:choice>
+    <xsd:attributeGroup ref="Q2:encodingStyle"/>
+  </xsd:complexType>
+  <xsd:complexType name="sayHelloResponse_OperType">
+    <xsd:choice maxOccurs="1" minOccurs="1">
+      <xsd:group ref="Q1:SayHelloResponseGroup"/>
+    </xsd:choice>
+    <xsd:attributeGroup ref="Q2:encodingStyle"/>
+  </xsd:complexType>
+</xsd:schema>
